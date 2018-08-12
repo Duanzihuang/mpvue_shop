@@ -1,0 +1,20 @@
+<template name="69fe898a">
+  <view class="_view data-v-6d6b1c16 category">
+    <scroll-view scroll-y scroll-with-animation="{{true}}" bindtap="handleProxy" class="_scroll-view data-v-6d6b1c16 category-left" data-eventid="{{'0'}}" data-comkey="{{$k}}" style=" {{('height:' + (windowHeight - 10 + 'px') + ';')}}">
+      <block wx:key="category.cat_id" key="{{category.cat_id}}" wx:for="{{categories}}" wx:for-index="index" wx:for-item="category">
+        <view data-category-id="{{category.cat_id}}" data-index="{{index}}" class="_view data-v-6d6b1c16 {{['category-left-item', index === selectedIndex ? 'category-left-active' : '']}}">{{category.cat_name}}</view>
+      </block>
+    </scroll-view>
+    <scroll-view scroll-y scroll-with-animation="{{true}}" class="_scroll-view data-v-6d6b1c16 category-right" style=" {{('height:' + (windowHeight - 10 + 'px') + ';')}}">
+      <view wx:key="item.cat_id" key="{{item.cat_id}}" wx:for="{{brandList}}" wx:for-index="index1" wx:for-item="item" class="_view data-v-6d6b1c16">
+        <view class="_view data-v-6d6b1c16 category-right-title">{{item.cat_name}}</view>
+        <view class="_view data-v-6d6b1c16 category-right-brandlist">
+          <view class="_view data-v-6d6b1c16 category-right-brand" wx:key="brand.cat_id" key="{{brand.cat_id}}" wx:for="{{item.children}}" wx:for-index="index" wx:for-item="brand">
+            <image src="{{brand.cat_icon}}" class="_image data-v-6d6b1c16"></image>
+            <text class="_text data-v-6d6b1c16">{{brand.cat_name}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</template>

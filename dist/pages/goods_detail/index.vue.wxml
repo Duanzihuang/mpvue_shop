@@ -1,0 +1,76 @@
+<template name="0c4385d2">
+  <view class="_view data-v-6f3a46f2">
+    <swiper indicator-dots="{{true}}" autoplay interval="{{3000}}" duration="{{1000}}" circular indicator-color="rgba(255,255,255,.5)" indicator-active-color="#ffffff" class="_swiper data-v-6f3a46f2">
+      <block wx:key="item.pics_id" key="{{item.pics_id}}" wx:for="{{goods_detail.pics}}" wx:for-index="index" wx:for-item="item">
+        <swiper-item class="_swiper-item data-v-6f3a46f2">
+          <image src="{{item.pics_big}}" class="_image data-v-6f3a46f2 slide-image"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="_view data-v-6f3a46f2 product-info">
+      <view class="_view data-v-6f3a46f2 product-head">
+        <text class="_text data-v-6f3a46f2 price">￥{{goods_detail.goods_price}}</text>
+      </view>
+      <view class="_view data-v-6f3a46f2 product-body">
+        <view class="_view data-v-6f3a46f2 product-name">{{goods_detail.goods_name}}</view>
+        <view class="_view data-v-6f3a46f2 product-like">
+          <view class="_view data-v-6f3a46f2 iconfont icon-shoucang"></view>
+          <view class="_view data-v-6f3a46f2">收藏</view>
+        </view>
+      </view>
+      <view class="_view data-v-6f3a46f2 product-foot">
+        <text class="_text data-v-6f3a46f2">快递：免运费</text>
+      </view>
+    </view>
+    <view class="_view data-v-6f3a46f2 part">
+      <view class="_view data-v-6f3a46f2 part-item part-line">
+        <text class="_text data-v-6f3a46f2 note">促销 </text>
+        <text class="_text data-v-6f3a46f2 color-main description">满300减30元 </text>
+      </view>
+      <view class="_view data-v-6f3a46f2 part-item">
+        <text class="_text data-v-6f3a46f2 note">已选 </text>
+        <text class="_text data-v-6f3a46f2 description">黑色/S/1件 </text>
+      </view>
+    </view>
+    <view class="_view data-v-6f3a46f2 part">
+      <view class="_view data-v-6f3a46f2 part-item">
+        <text class="_text data-v-6f3a46f2 note">送至</text>
+        <text class="_text data-v-6f3a46f2 description">广东省深圳市</text>
+        <view class="_view data-v-6f3a46f2 iconfont icon-jiantouyou"></view>
+      </view>
+    </view>
+    <view class="_view data-v-6f3a46f2 tabs">
+      <view class="_view data-v-6f3a46f2 tabs-head">
+        <block wx:key="index" key="{{index}}" wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item">
+          <view bindtap="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" class="_view data-v-6f3a46f2 {{['tabs-item', selectedTabIndex === index ? 'active' : '']}}">{{item}}</view>
+        </block>
+      </view>
+      <view class="_view data-v-6f3a46f2 tabs-body">
+        <view hidden="{{!(selectedTabIndex===0)}}" class="_view data-v-6f3a46f2">
+          <rich-text nodes="{{goods_detail.goods_introduce}}" class="_view data-v-6f3a46f2"></rich-text>
+        </view>
+        <view hidden="{{!(selectedTabIndex===1)}}" class="_view data-v-6f3a46f2">
+          <view wx:key="item.attr_id" key="{{item.attr_id}}" class="_view data-v-6f3a46f2 param-item" wx:for="{{goods_detail.attrs}}" wx:for-index="index" wx:for-item="item">
+            <text class="_text data-v-6f3a46f2 {{['note', index === goods_detail.attrs.length - 1 ? 'param-item-last' : '']}}">{{item.attr_name}}</text>
+            <text class="_text data-v-6f3a46f2 {{[  'description',  index === goods_detail.attrs.length - 1 ? 'param-item-last' : '']}}">{{item.attr_value}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="_view data-v-6f3a46f2 fixed-bar">
+      <view class="_view data-v-6f3a46f2 item">
+        <button class="_button data-v-6f3a46f2 contact-btn" open-type="contact"></button>
+        <view class="_view data-v-6f3a46f2 iconfont icon-kefu"></view>
+        <text class="_text data-v-6f3a46f2 note">联系客服</text>
+      </view>
+      <view bindtap="handleProxy" class="_view data-v-6f3a46f2 item" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+        <view class="_view data-v-6f3a46f2 iconfont icon-gouwuche"></view>
+        <text class="_text data-v-6f3a46f2 note">购物车</text>
+      </view>
+      <view class="_view data-v-6f3a46f2 btn-group">
+        <view bindtap="handleProxy" class="_view data-v-6f3a46f2 btn yellow-btn" data-eventid="{{'2'}}" data-comkey="{{$k}}">加入购物车</view>
+        <view class="_view data-v-6f3a46f2 btn red-btn">立即购买</view>
+      </view>
+    </view>
+  </view>
+</template>

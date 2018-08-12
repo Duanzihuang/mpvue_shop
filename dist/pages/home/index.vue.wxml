@@ -1,0 +1,41 @@
+<template name="887c8548">
+  <view class="_div data-v-05fdf537">
+    <swiper class="_swiper data-v-05fdf537 slide" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="1000" indicator-active-color="#ffffff" circular>
+      <block wx:key="item.image_src" key="{{item.image_src}}" wx:for="{{swiperdata}}" wx:for-index="index" wx:for-item="item">
+        <navigator url="/pages/goods_detail/main?goods_id=140" class="_a data-v-05fdf537">
+          <swiper-item class="_swiper-item data-v-05fdf537">
+            <image src="{{item.image_src}}" class="_image data-v-05fdf537 slide-image"></image>
+          </swiper-item>
+        </navigator>
+      </block>
+    </swiper>
+    <view class="_div data-v-05fdf537 category">
+      <view wx:key="item.name" key="{{item.name}}" class="_div data-v-05fdf537 category-item" wx:for="{{categories}}" wx:for-index="index" wx:for-item="item">
+        <image src="{{item.image_src}}" alt class="_img data-v-05fdf537"></image>
+      </view>
+    </view>
+    <view class="_div data-v-05fdf537 floor">
+      <view wx:key="index" key="{{index}}" wx:for="{{floors}}" wx:for-index="index" wx:for-item="item" class="_div data-v-05fdf537">
+        <view class="_div data-v-05fdf537 floor-head">
+          <image src="{{item.floor_title.image_src}}" alt class="_img data-v-05fdf537"></image>
+        </view>
+        <view class="_div data-v-05fdf537 floor-body">
+          <view class="_div data-v-05fdf537 floor-body-left">
+            <image src="{{item.product_list[0].image_src}}" alt class="_img data-v-05fdf537"></image>
+          </view>
+          <view class="_div data-v-05fdf537 floor-body-right">
+            <image wx:if="{{subIndex > 0}}" wx:key="subitem.name" key="{{subitem.name}}" src="{{subitem.image_src}}" alt wx:for="{{item.product_list}}" wx:for-index="subIndex" wx:for-item="subitem" class="_img data-v-05fdf537" style=" {{('width:' + (subitem.image_width + 'rpx;') + ';')}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-05fdf537 end-tips">
+      <view class="_div data-v-05fdf537 iconfont icon-xiao"></view>
+      <view class="_div data-v-05fdf537 bottomline">我是有底线的</view>
+    </view>
+    <view bindtap="handleProxy" class="_div data-v-05fdf537 to-top" hidden="{{!(isShowGoToTop)}}" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+      <image class="_img data-v-05fdf537 to-top-img" src="/static/img/arrow_top@2x.png"></image>
+      <label class="_span data-v-05fdf537 to-top-text">顶部</label>
+    </view>
+  </view>
+</template>

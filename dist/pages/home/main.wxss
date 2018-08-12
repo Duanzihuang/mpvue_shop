@@ -1,0 +1,91 @@
+@import "../../common/vendor.wxss";
+
+.slide {
+  width: 750rpx;
+  height: 350rpx;
+}
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+.category {
+  display: flex;
+  background-color: white;
+  height: 180rpx;
+  justify-content: space-around;
+  align-items: center;
+}
+.category-item {
+  width: 128rpx;
+  height: 140rpx;
+}
+.category-item ._img {
+  width: 100%;
+  height: 100%;
+}
+.floor {
+  margin-top: 20rpx;
+  background-color: white;
+}
+.floor-head {
+  width: 750rpx;
+  height: 59rpx;
+}
+.floor-head ._img {
+  margin: 10rpx 0rpx 0rpx 10rpx;
+  width: 100%;
+  height: 100%;
+}
+.floor-body {
+  display: flex;
+  padding: 20rpx 16rpx 10rpx 16rpx;
+}
+.floor-body-left {
+  width: 232rpx;
+  height: 386rpx;
+}
+.floor-body-left ._img {
+  width: 100%;
+  height: 100%;
+}
+.floor-body-right {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.floor-body-right image {
+  height: 188rpx;
+  margin: 0 0 10rpx 10rpx;
+}
+.end-tips {
+  display: flex;
+  height: 100rpx;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #888;
+}
+.end-tips .bottomline {
+  margin-left: 5rpx;
+}
+.to-top {
+  width: 90rpx;
+  height: 90rpx;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  position: fixed;
+  right: 40rpx;
+  bottom: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.to-top-img {
+  width: 24rpx;
+  height: 14rpx;
+}
+.to-top-text {
+  margin-top: 20rpx;
+  color: #999;
+}

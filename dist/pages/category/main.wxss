@@ -1,0 +1,68 @@
+@import "../../common/vendor.wxss";
+
+.category {
+  margin-top: 20rpx;
+  display: flex;
+}
+.category-left {
+  width: 200rpx;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+}
+.category-left-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200rpx;
+  height: 100rpx;
+  position: relative;
+}
+.category-left-active {
+  background-color: #ffffff;
+}
+.category-left-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10rpx;
+  width: 10rpx;
+  height: 80rpx;
+  background-color: #ff2d4a;
+}
+.category-right {
+  flex: 1;
+  background-color: #ffffff;
+}
+.category-right-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+}
+.category-right-title::before {
+  content: '/';
+  color: #eeeeee;
+  margin-right: 20rpx;
+}
+.category-right-title::after {
+  content: '/';
+  color: #eeeeee;
+  margin-left: 20rpx;
+}
+.category-right-brandlist {
+  display: flex;
+  flex-wrap: wrap;
+}
+.category-right-brand {
+  width: 33.3333333%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.category-right-brand image {
+  width: 100rpx;
+  height: 80rpx;
+}

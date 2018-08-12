@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/home/main",
+    "pages/category/main",
+    "pages/shopcart/main",
+    "pages/mine/main",
+    "pages/index/main",
+    "pages/logs/main",
+    "pages/counter/main",
+    "pages/goods_detail/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff2d4a",
+    "navigationBarTitleText": "品优购",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#ff2d4a",
+    "list": [
+      {
+        "pagePath": "pages/home/main",
+        "text": "首页",
+        "iconPath": "static/img/icon_home@3x.png",
+        "selectedIconPath": "static/img/icon_home_active@3x.png"
+      },
+      {
+        "pagePath": "pages/category/main",
+        "text": "分类",
+        "iconPath": "static/img/icon_category@3x.png",
+        "selectedIconPath": "static/img/icon_category_active@3x.png"
+      },
+      {
+        "pagePath": "pages/shopcart/main",
+        "text": "购物车",
+        "iconPath": "static/img/icon_cart@3x.png",
+        "selectedIconPath": "static/img/icon_cart_active@3x.png"
+      },
+      {
+        "pagePath": "pages/mine/main",
+        "text": "我的",
+        "iconPath": "static/img/icon_me@3x.png",
+        "selectedIconPath": "static/img/icon_me_active@3x.png"
+      }
+    ]
+  }
+}

@@ -1,1 +1,5 @@
 <import src="/components/card.vue.wxml" />
+<import src="/components/myaddress.vue.wxml" />
+<template name="data-v-6f3a46f2-default-1">
+  <view class="_div data-v-6f3a46f2">{{test}}{{test}}</view>
+</template>

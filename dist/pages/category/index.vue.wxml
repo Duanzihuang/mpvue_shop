@@ -6,7 +6,7 @@
       </block>
     </scroll-view>
     <scroll-view scroll-y scroll-with-animation="{{true}}" class="_scroll-view data-v-6d6b1c16 category-right" style=" {{('height:' + (windowHeight - 10 + 'px') + ';')}}">
-      <view wx:key="item.cat_id" key="{{item.cat_id}}" wx:for="{{brandList}}" wx:for-index="index1" wx:for-item="item" class="_view data-v-6d6b1c16">
+      <view wx:key="index1" key="{{index1}}" wx:for="{{brandList}}" wx:for-index="index1" wx:for-item="item" class="_view data-v-6d6b1c16">
         <view class="_view data-v-6d6b1c16 category-right-title">{{item.cat_name}}</view>
         <view class="_view data-v-6d6b1c16 category-right-brandlist">
           <view class="_view data-v-6d6b1c16 category-right-brand" wx:key="brand.cat_id" key="{{brand.cat_id}}" wx:for="{{item.children}}" wx:for-index="index" wx:for-item="brand">

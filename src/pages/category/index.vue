@@ -6,7 +6,7 @@
       </block>
     </scroll-view>
     <scroll-view scroll-y :scroll-with-animation="true" class="category-right" :style="{height:(windowHeight-10)+'px'}">
-      <view v-for="(item,index1) in brandList" :key="item.cat_id">
+      <view v-for="(item,index1) in brandList" :key="index1">
         <view class="category-right-title">{{item.cat_name}}</view>
         <view class="category-right-brandlist">
           <view class="category-right-brand" :key="brand.cat_id" v-for="brand in item.children">

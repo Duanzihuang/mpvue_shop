@@ -1,0 +1,7 @@
+<import src="/components/slots" />
+<template name="6214f59d">
+  <view bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_view data-v-3bfea8e5">
+    <template name="default">请选择收获地址</template>
+    <template data="{{...$root[$k], $root}}" is="{{$slotdefault || 'default'}}"></template>
+  </view>
+</template>

@@ -1,4 +1,4 @@
-const KEY = 'GOODS'
+const KEY = 'goods'
 
 export const getLocalGoods = () => {
   return wx.getStorageSync(KEY) || {}

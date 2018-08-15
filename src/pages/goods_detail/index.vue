@@ -43,7 +43,14 @@
     <view class="part">
       <view class="part-item">
         <text class="note">送至</text>
-        <text class="description">广东省深圳市</text>
+        <view @click="chooseAddress">
+          <view v-if="!addressInfo">
+            <text>请选择收获地址</text>
+          </view>
+          <view v-else>
+            <text>{{addressInfo}}</text>
+          </view>
+        </view>
         <view class="iconfont icon-jiantouyou"></view>
       </view>
     </view>
@@ -89,20 +96,30 @@
 <script>
 import { addLocalGoods } from '@/utils/storageHelper.js'
 export default {
-  data () {
+  data() {
     return {
+      test: 'aaaaa',
       goods_detail: {}, // 商品详情数据
       selectedTabIndex: 0, // 默认选中的tab的索引
-      tabs: ['图文介绍', '规格参数']
+      tabs: ['图文介绍', '规格参数'],
+      addressInfo: null //收获地址
     }
   },
-  onLoad (options) {
+  onLoad(options) {
     // 获取商品详情数据
     this.getGoodsDetailData(options.goods_id)
+
+    // 获取本地存储的addressInfo
+    const address = wx.getStorageSync('address')
+    if (address) {
+      this.addressInfo = `${address.provinceName} ${address.cityName} ${
+        address.countyName
+      }`
+    }
   },
   methods: {
     // 获取商品详情数据
-    async getGoodsDetailData (goodsId) {
+    async getGoodsDetailData(goodsId) {
       const result = await this.$axios.get('api/public/v1/goods/detail', {
         params: {
           goods_id: goodsId
@@ -110,14 +127,14 @@ export default {
       })
       this.goods_detail = result.data.message
     },
-    tabSwitch (index) {
+    tabSwitch(index) {
       this.selectedTabIndex = index
     },
     // 添加到购物车
-    addToShopCart () {
+    addToShopCart() {
       wx.showToast({
         title: '添加成功',
-        icon: 'success'
+        image: '/static/img/duigou.png'
       })
 
       addLocalGoods({
@@ -126,9 +143,23 @@ export default {
       })
     },
     // 去购物车
-    goToShopCart () {
+    goToShopCart() {
       wx.switchTab({
         url: '/pages/shopcart/main'
+      })
+    },
+    chooseAddress() {
+      wx.chooseAddress({
+        success: res => {
+          //设置收货地址
+          this.addressInfo = `${res.provinceName} ${res.cityName} ${
+            res.countyName
+          }`
+
+          //保存到本地
+          wx.setStorageSync('address', res)
+        },
+        fail: () => {}
       })
     }
   }
@@ -221,6 +252,7 @@ swiper image {
     padding: 28rpx 16rpx;
     position: relative;
     align-items: center;
+    // justify-content: space-between;
   }
 }
 .part .note {
@@ -345,5 +377,12 @@ swiper image {
       color: #666;
     }
   }
+}
+.iconfont .icon-shoucang{
+  color:'#ff2d4a'
+}
+
+.iconfont .icon-shoucang-fill{
+  color:'#ff2d4a'
 }
 </style>

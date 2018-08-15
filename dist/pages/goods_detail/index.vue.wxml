@@ -35,14 +35,21 @@
     <view class="_view data-v-6f3a46f2 part">
       <view class="_view data-v-6f3a46f2 part-item">
         <text class="_text data-v-6f3a46f2 note">送至</text>
-        <text class="_text data-v-6f3a46f2 description">广东省深圳市</text>
+        <view bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_view data-v-6f3a46f2">
+          <view wx:if="{{!addressInfo}}" class="_view data-v-6f3a46f2">
+            <text class="_text data-v-6f3a46f2">请选择收获地址</text>
+          </view>
+          <view wx:else class="_view data-v-6f3a46f2">
+            <text class="_text data-v-6f3a46f2">{{addressInfo}}</text>
+          </view>
+        </view>
         <view class="_view data-v-6f3a46f2 iconfont icon-jiantouyou"></view>
       </view>
     </view>
     <view class="_view data-v-6f3a46f2 tabs">
       <view class="_view data-v-6f3a46f2 tabs-head">
         <block wx:key="index" key="{{index}}" wx:for="{{tabs}}" wx:for-index="index" wx:for-item="item">
-          <view bindtap="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" class="_view data-v-6f3a46f2 {{['tabs-item', selectedTabIndex === index ? 'active' : '']}}">{{item}}</view>
+          <view bindtap="handleProxy" data-eventid="{{'1-'+index}}" data-comkey="{{$k}}" class="_view data-v-6f3a46f2 {{['tabs-item', selectedTabIndex === index ? 'active' : '']}}">{{item}}</view>
         </block>
       </view>
       <view class="_view data-v-6f3a46f2 tabs-body">
@@ -63,12 +70,12 @@
         <view class="_view data-v-6f3a46f2 iconfont icon-kefu"></view>
         <text class="_text data-v-6f3a46f2 note">联系客服</text>
       </view>
-      <view bindtap="handleProxy" class="_view data-v-6f3a46f2 item" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+      <view bindtap="handleProxy" class="_view data-v-6f3a46f2 item" data-eventid="{{'2'}}" data-comkey="{{$k}}">
         <view class="_view data-v-6f3a46f2 iconfont icon-gouwuche"></view>
         <text class="_text data-v-6f3a46f2 note">购物车</text>
       </view>
       <view class="_view data-v-6f3a46f2 btn-group">
-        <view bindtap="handleProxy" class="_view data-v-6f3a46f2 btn yellow-btn" data-eventid="{{'2'}}" data-comkey="{{$k}}">加入购物车</view>
+        <view bindtap="handleProxy" class="_view data-v-6f3a46f2 btn yellow-btn" data-eventid="{{'3'}}" data-comkey="{{$k}}">加入购物车</view>
         <view class="_view data-v-6f3a46f2 btn red-btn">立即购买</view>
       </view>
     </view>

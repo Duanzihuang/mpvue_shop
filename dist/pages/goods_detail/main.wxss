@@ -194,3 +194,9 @@ swiper image {
   font-size: 22rpx;
   color: #666;
 }
+.iconfont .icon-shoucang {
+  color: '#ff2d4a';
+}
+.iconfont .icon-shoucang-fill {
+  color: '#ff2d4a';
+}

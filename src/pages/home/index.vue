@@ -4,13 +4,11 @@
     <!-- 1.0 轮播图 -->
     <swiper class="slide" :indicator-dots="true" :autoplay="true" interval="3000" duration="1000" indicator-active-color="#ffffff" circular>
       <block v-for="item in swiperdata" :key="item.image_src">
-        <!-- <navigator :url="item.navigator_url"> -->
-        <a href="/pages/goods_detail/main?goods_id=140">
+        <navigator :url="item.navigator_url">
           <swiper-item>
             <image :src="item.image_src" class="slide-image" />
           </swiper-item>
-        </a>
-        <!-- </navigator> -->
+        </navigator>
       </block>
     </swiper>
     <!-- 2.0 分类 -->

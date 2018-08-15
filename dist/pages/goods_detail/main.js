@@ -1,13 +1,13 @@
 require("../../common/manifest.js");
 require("../../common/vendor.js");
-global.webpackJsonp([2],{
+global.webpackJsonp([1],{
 
 /***/ 122:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(123);
 
@@ -23,13 +23,13 @@ app.$mount();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_6f3a46f2_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_6f3a46f2_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(131);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(124)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 
 /* template */
@@ -87,9 +87,16 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_storageHelper_js__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_storageHelper_js__ = __webpack_require__(130);
 
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -183,14 +190,22 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
+      test: 'aaaaa',
       goods_detail: {}, // 商品详情数据
       selectedTabIndex: 0, // 默认选中的tab的索引
-      tabs: ['图文介绍', '规格参数']
+      tabs: ['图文介绍', '规格参数'],
+      addressInfo: null //收获地址
     };
   },
   onLoad: function onLoad(options) {
     // 获取商品详情数据
     this.getGoodsDetailData(options.goods_id);
+
+    // 获取本地存储的addressInfo
+    var address = wx.getStorageSync('address');
+    if (address) {
+      this.addressInfo = address.provinceName + ' ' + address.cityName + ' ' + address.countyName;
+    }
   },
 
   methods: {
@@ -232,7 +247,7 @@ if (false) {(function () {
     addToShopCart: function addToShopCart() {
       wx.showToast({
         title: '添加成功',
-        icon: 'success'
+        image: '/static/img/duigou.png'
       });
 
       Object(__WEBPACK_IMPORTED_MODULE_2__utils_storageHelper_js__["a" /* addLocalGoods */])({
@@ -246,13 +261,27 @@ if (false) {(function () {
       wx.switchTab({
         url: '/pages/shopcart/main'
       });
+    },
+    chooseAddress: function chooseAddress() {
+      var _this2 = this;
+
+      wx.chooseAddress({
+        success: function success(res) {
+          //设置收货地址
+          _this2.addressInfo = res.provinceName + ' ' + res.cityName + ' ' + res.countyName;
+
+          //保存到本地
+          wx.setStorageSync('address', res);
+        },
+        fail: function fail() {}
+      });
     }
   }
 });
 
 /***/ }),
 
-/***/ 126:
+/***/ 130:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -260,7 +289,7 @@ if (false) {(function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addLocalGoods; });
 /* unused harmony export updateLocalGoods */
 /* unused harmony export deleteGoodsById */
-var KEY = 'GOODS';
+var KEY = 'goods';
 
 var getLocalGoods = function getLocalGoods() {
   return wx.getStorageSync(KEY) || {};
@@ -297,7 +326,7 @@ var deleteGoodsById = function deleteGoodsById(goodsId) {
 
 /***/ }),
 
-/***/ 127:
+/***/ 131:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -335,7 +364,22 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "product-body"
   }, [_c('view', {
     staticClass: "product-name"
-  }, [_vm._v(_vm._s(_vm.goods_detail.goods_name))]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('view', {
+  }, [_vm._v(_vm._s(_vm.goods_detail.goods_name))]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('view', {
+    staticClass: "part"
+  }, [_c('view', {
+    staticClass: "part-item"
+  }, [_c('text', {
+    staticClass: "note"
+  }, [_vm._v("送至")]), _vm._v(" "), _c('view', {
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.chooseAddress
+    }
+  }, [(!_vm.addressInfo) ? _c('view', [_c('text', [_vm._v("请选择收获地址")])]) : _c('view', [_c('text', [_vm._v(_vm._s(_vm.addressInfo))])])]), _vm._v(" "), _c('view', {
+    staticClass: "iconfont icon-jiantouyou"
+  })])]), _vm._v(" "), _c('view', {
     staticClass: "tabs"
   }, [_c('view', {
     staticClass: "tabs-head"
@@ -345,7 +389,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }, [_c('view', {
       class: ['tabs-item', _vm.selectedTabIndex === index ? 'active' : ''],
       attrs: {
-        "eventid": '0-' + index
+        "eventid": '1-' + index
       },
       on: {
         "click": function($event) {
@@ -398,7 +442,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("联系客服")])], 1), _vm._v(" "), _c('view', {
     staticClass: "item",
     attrs: {
-      "eventid": '1'
+      "eventid": '2'
     },
     on: {
       "click": _vm.goToShopCart
@@ -412,7 +456,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('view', {
     staticClass: "btn yellow-btn",
     attrs: {
-      "eventid": '2'
+      "eventid": '3'
     },
     on: {
       "click": _vm.addToShopCart
@@ -447,18 +491,6 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
   }, [_vm._v("已选\n      ")]), _vm._v(" "), _c('text', {
     staticClass: "description"
   }, [_vm._v("黑色/S/1件\n      ")])])])
-},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('view', {
-    staticClass: "part"
-  }, [_c('view', {
-    staticClass: "part-item"
-  }, [_c('text', {
-    staticClass: "note"
-  }, [_vm._v("送至")]), _vm._v(" "), _c('text', {
-    staticClass: "description"
-  }, [_vm._v("广东省深圳市")]), _vm._v(" "), _c('view', {
-    staticClass: "iconfont icon-jiantouyou"
-  })])])
 }]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }

@@ -1,0 +1,7 @@
+<template name="7a69e431">
+  <view bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_view data-v-fe98350e">
+    <view wx:if="{{type === 'goods_detail'}}" class="_view data-v-fe98350e">
+      <text class="_text data-v-fe98350e">请选择收获地址</text>
+    </view>
+  </view>
+</template>

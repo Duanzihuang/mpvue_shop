@@ -2,7 +2,7 @@
   <view class="_div data-v-05fdf537">
     <swiper class="_swiper data-v-05fdf537 slide" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="1000" indicator-active-color="#ffffff" circular>
       <block wx:key="item.image_src" key="{{item.image_src}}" wx:for="{{swiperdata}}" wx:for-index="index" wx:for-item="item">
-        <navigator url="/pages/goods_detail/main?goods_id=140" class="_a data-v-05fdf537">
+        <navigator url="{{item.navigator_url}}" class="_navigator data-v-05fdf537">
           <swiper-item class="_swiper-item data-v-05fdf537">
             <image src="{{item.image_src}}" class="_image data-v-05fdf537 slide-image"></image>
           </swiper-item>

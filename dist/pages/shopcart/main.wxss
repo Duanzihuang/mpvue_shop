@@ -1,1 +1,145 @@
 @import "../../common/vendor.wxss";
+
+.empty-car.data-v-36ace7a4 {
+  display: flex;
+  flex-direction: column;
+  height: 500rpx;
+  justify-content: center;
+  align-items: center;
+}
+.empty-car image.data-v-36ace7a4 {
+  width: 125rpx;
+  height: 124rpx;
+}
+.empty-car-tips.data-v-36ace7a4 {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+.extra.data-v-36ace7a4 {
+  font-size: 24rpx;
+  color: #999;
+}
+.shop-head.data-v-36ace7a4 {
+  background-color: #fff;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  border-bottom: 2rpx solid #ddd;
+}
+.shop-head-info.data-v-36ace7a4 {
+  display: flex;
+  align-items: center;
+}
+.shop-head-info .shop-name.data-v-36ace7a4 {
+  margin-left: 10rpx;
+}
+.goods-item.data-v-36ace7a4 {
+  height: 220rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.goods-item-pic.data-v-36ace7a4 {
+  width: 160rpx;
+  height: 160rpx;
+  margin-left: 10rpx;
+  border: 2rpx solid #ddd;
+  padding: 10rpx;
+  border-radius: 5rpx;
+}
+.goods-item-pic image.data-v-36ace7a4 {
+  width: 100%;
+  height: 100%;
+}
+.goods-item-info.data-v-36ace7a4 {
+  flex: 1;
+  height: 180rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0rpx 20rpx;
+}
+.goods-item-info-title.data-v-36ace7a4 {
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.goods-item-info-price.data-v-36ace7a4 {
+  color: #ff2d4a;
+  font-size: 30rpx;
+}
+.goods-item-info-edit.data-v-36ace7a4 {
+  display: flex;
+  justify-content: space-between;
+}
+.goods-item-info-edit .outer.data-v-36ace7a4 {
+  border: 2rpx solid #ddd;
+  display: flex;
+  align-items: center;
+  border-radius: 5rpx;
+}
+.goods-item-info-edit .outer view.data-v-36ace7a4 {
+  height: 50rpx;
+  width: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+}
+.goods-item-info-edit .outer .value.data-v-36ace7a4 {
+  width: 65rpx;
+  border-left: 2rpx solid #ddd;
+}
+.goods-item-info-edit .outer .add.data-v-36ace7a4 {
+  border-left: 2rpx solid #ddd;
+}
+.pubIcon.data-v-36ace7a4 {
+  background: url(https://mcart.jiuxian.com/statics/images/cart/catIcon.png) no-repeat 0 0;
+  background-size: 300rpx 300rpx;
+  width: 55rpx;
+  height: 55rpx;
+}
+.trueIcon.data-v-36ace7a4 {
+  background-position: 0 -225rpx;
+}
+.falseIcon.data-v-36ace7a4 {
+  background-position: -50rpx -225rpx;
+}
+.fixed-bar.data-v-36ace7a4 {
+  display: flex;
+  height: 98rpx;
+  width: 750rpx;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.fixed-bar .allselect.data-v-36ace7a4 {
+  padding-left: 20rpx;
+  width: 200rpx;
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+}
+.fixed-bar .statistics.data-v-36ace7a4 {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.fixed-bar .jiesuan.data-v-36ace7a4 {
+  width: 200rpx;
+  height: 98rpx;
+  background-color: #ff2d4a;
+  color: #fff;
+  text-align: center;
+  line-height: 98rpx;
+}
+.fixed-bar .disabled.data-v-36ace7a4 {
+  background-color: #ddd;
+}

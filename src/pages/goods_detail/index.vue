@@ -379,10 +379,12 @@ swiper image {
   }
 }
 .iconfont .icon-shoucang{
-  color:'#ff2d4a'
+  font-size:50px;
+  color:'#ff2d4a' !important;
 }
 
 .iconfont .icon-shoucang-fill{
-  color:'#ff2d4a'
+  font-size:50px;
+  color:'#ff2d4a' !important;
 }
 </style>

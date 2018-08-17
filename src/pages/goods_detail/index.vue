@@ -156,6 +156,9 @@ export default {
             res.countyName
           }`
 
+          //详细信息
+          res.detailAddress = res.provinceName + res.cityName + res.countyName + res.detailInfo
+
           //保存到本地
           wx.setStorageSync('address', res)
         },

@@ -76,6 +76,8 @@ export default {
   onShow() {
     // 获取本地存储的商品数据
     this.getGoodsList()
+
+    this.allSelected = true
   },
   computed: {
     // 计算总数量

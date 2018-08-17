@@ -1,5 +1,60 @@
 <template name="11df24bd">
   <view class="_view data-v-19c40c08">
-    <text class="_text data-v-19c40c08">结算、支付</text>
+    <view bindtap="handleProxy" class="_view data-v-19c40c08 address" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+      <view class="_view data-v-19c40c08 address-info" wx:if="{{addressInfo}}">
+        <view class="_view data-v-19c40c08 address-info-name-phone">
+          <view class="_view data-v-19c40c08">
+            <text class="_text data-v-19c40c08">收货人：{{addressInfo.userName}}</text>
+          </view>
+          <view style="display:flex;align-items: center;" class="_view data-v-19c40c08">
+            <text style="margin-right:36rpx;" class="_text data-v-19c40c08">{{addressInfo.telNumber}}</text>
+            <view class="_view data-v-19c40c08 iconfont-tap icon-jiantouyou"></view>
+          </view>
+        </view>
+        <view class="_view data-v-19c40c08 address-info-detail-info">
+          <text class="_text data-v-19c40c08">收货地址：{{addressInfo.detailAddress}}</text>
+        </view>
+      </view>
+      <view class="_view data-v-19c40c08 address-add" wx:else>
+        <text class="_text data-v-19c40c08">+ 新增地址</text>
+      </view>
+      <view class="_view data-v-19c40c08 address-pic">
+        <image src="/static/img/cart_border@2x.png" class="_image data-v-19c40c08"></image>
+      </view>
+    </view>
+    <view class="_view data-v-19c40c08 order-list">
+      <block wx:key="item.goods_id" key="{{item.goods_id}}" wx:for="{{goodsList}}" wx:for-index="index" wx:for-item="item">
+        <view class="_view data-v-19c40c08 product-item">
+          <navigator class="_navigator data-v-19c40c08 product-left">
+            <image src="{{item.goods_small_logo}}" class="_image data-v-19c40c08"></image>
+          </navigator>
+          <view class="_view data-v-19c40c08 product-right">
+            <navigator class="_navigator data-v-19c40c08 product-name"> {{item.goods_name}} </navigator>
+            <view class="_view data-v-19c40c08 product-right-price">
+              <text class="_text data-v-19c40c08 product-right-price-symbol">￥</text>
+              <text class="_text data-v-19c40c08 product-right-price-integer">{{item.goods_price}}</text>
+              <text class="_text data-v-19c40c08 product-right-price-decimal">.00</text>
+            </view>
+            <view class="_view data-v-19c40c08 product-right-num">x{{item.goods_number}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="_view data-v-19c40c08 order-total">
+      <view class="_view data-v-19c40c08 order-total-item">
+        <view class="_view data-v-19c40c08">商品金额</view>
+        <view class="_view data-v-19c40c08 order-total-item-price">￥{{goodsAmount}}</view>
+      </view>
+      <view class="_view data-v-19c40c08 order-total-item">
+        <view class="_view data-v-19c40c08">运 费</view>
+        <view class="_view data-v-19c40c08 order-total-item-price">+￥0.00</view>
+      </view>
+      <block wx:if="{{!token}}">
+        <button open-type="getUserInfo" bindgetuserinfo="handleProxy" class="_button data-v-19c40c08 wxLogin" data-eventid="{{'1'}}" data-comkey="{{$k}}">点击登录后下单支付</button>
+      </block>
+      <block wx:else>
+        <view bindtap="handleProxy" class="_view data-v-19c40c08 wxPay" data-eventid="{{'2'}}" data-comkey="{{$k}}">微信支付</view>
+      </block>
+    </view>
   </view>
 </template>

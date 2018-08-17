@@ -1,15 +1,15 @@
 require("common/manifest.js");
 require("common/vendor.js");
-global.webpackJsonp([10],{
+global.webpackJsonp([11],{
 
 /***/ 51:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(89);
@@ -26,9 +26,9 @@ __WEBPACK_IMPORTED_MODULE_3_axios___default.a.defaults.baseURL = 'https://www.zh
 __WEBPACK_IMPORTED_MODULE_3_axios___default.a.defaults.adapter = function (config) {
   return new __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
     wx.request({
-      method: config.method,
+      method: config.method === 'post' ? 'POST' : 'GET',
       url: config.url,
-      data: config.params,
+      data: config.params ? config.params : config.data,
       header: config.headers,
       success: function success(res) {
         resolve(res);
@@ -49,6 +49,10 @@ __WEBPACK_IMPORTED_MODULE_3_axios___default.a.interceptors.request.use(function 
     mask: true
   });
   // 在发送请求之前做些什么
+  if (wx.getStorageSync('token')) {
+    config.headers.Authorization = wx.getStorageSync('token');
+  }
+  console.log(config);
   return config;
 }, function (error) {
   // 对请求错误做些什么
@@ -72,7 +76,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(87)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 
 /* template */

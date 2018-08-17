@@ -9,9 +9,9 @@ axios.defaults.baseURL = 'https://www.zhengzhicheng.cn/'
 axios.defaults.adapter = function (config) {
   return new Promise((resolve, reject) => {
     wx.request({
-      method: config.method,
+      method: config.method === 'post' ? 'POST':'GET',
       url: config.url,
-      data: config.params,
+      data: config.params ? config.params : config.data,
       header: config.headers,
       success (res) {
         resolve(res)
@@ -33,6 +33,10 @@ axios.interceptors.request.use(
       mask: true
     })
     // 在发送请求之前做些什么
+    if(wx.getStorageSync('token')){
+      config.headers.Authorization = wx.getStorageSync('token')
+    }
+    console.log(config)
     return config
   },
   function (error) {

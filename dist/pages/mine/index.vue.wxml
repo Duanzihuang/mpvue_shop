@@ -1,3 +1,75 @@
 <template name="d493a860">
-  <view class="_div data-v-401b38aa"> mine </view>
+  <view class="_view data-v-401b38aa">
+    <view class="_view data-v-401b38aa user">
+      <view class="_view data-v-401b38aa user-avatar-bg">
+        <image wx:if="{{userInfo.avatarUrl}}" class="_image data-v-401b38aa user-avatar-bg-img" src="{{userInfo.avatarUrl}}"></image>
+      </view>
+      <view class="_view data-v-401b38aa user-head">
+        <view class="_view data-v-401b38aa iconfont-tap icon-setting icon-shezhi"></view>
+        <view class="_view data-v-401b38aa user-avatar">
+          <image bindtap="handleProxy" class="_image data-v-401b38aa user-avatar-img" src="{{userInfo.avatarUrl || '/static/img/user_avator_default@2x.png'}}" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+        </view>
+        <view class="_view data-v-401b38aa iconfont-tap icon-message icon-xiaoxi"></view>
+      </view>
+      <text class="_text data-v-401b38aa user-name">{{ userInfo.nickName }}</text>
+      <button wx:if="{{!userInfo.nickName}}" class="_button data-v-401b38aa weui-btn mini-btn" size="mini" type="default" open-type="getUserInfo" bindgetuserinfo="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">授权获取信息</button>
+    </view>
+    <view class="_view data-v-401b38aa user-bottom ">
+      <view class="_view data-v-401b38aa item">
+        <view class="_view data-v-401b38aa item-number ">0</view>
+        <view class="_view data-v-401b38aa item-note">收藏的店铺</view>
+      </view>
+      <view class="_view data-v-401b38aa item">
+        <view class="_view data-v-401b38aa item-number ">0</view>
+        <view class="_view data-v-401b38aa item-note">收藏的商品</view>
+      </view>
+      <view class="_view data-v-401b38aa item">
+        <view class="_view data-v-401b38aa item-number ">0</view>
+        <view class="_view data-v-401b38aa item-note">关注的商品</view>
+      </view>
+      <view class="_view data-v-401b38aa item">
+        <view class="_view data-v-401b38aa item-number ">0</view>
+        <view class="_view data-v-401b38aa item-note">我的足迹</view>
+      </view>
+    </view>
+    <view class="_view data-v-401b38aa order" wx:if="{{userInfo.nickName}}">
+      <view class="_view data-v-401b38aa order-head">我的订单</view>
+      <view class="_view data-v-401b38aa order-body">
+        <navigator url="/pages/orders/main?type=1" class="_navigator data-v-401b38aa item">
+          <view class="_view data-v-401b38aa iconfont icon-dingdan "></view>
+          <view class="_view data-v-401b38aa item-note">全部订单</view>
+        </navigator>
+        <navigator url="/pages/orders/main?type=2" class="_navigator data-v-401b38aa item">
+          <view class="_view data-v-401b38aa iconfont icon-daifukuan "></view>
+          <view class="_view data-v-401b38aa item-note">待付款</view>
+        </navigator>
+        <navigator url="/pages/orders/main?type=3" class="_navigator data-v-401b38aa item">
+          <view class="_view data-v-401b38aa iconfont icon-daishouhuo "></view>
+          <view class="_view data-v-401b38aa item-note">待收货</view>
+        </navigator>
+        <navigator url="/pages/orders/main?type=4" class="_navigator data-v-401b38aa item">
+          <view class="_view data-v-401b38aa iconfont icon-tuikuan "></view>
+          <view class="_view data-v-401b38aa item-note">退款/退货</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="_view data-v-401b38aa cell ">
+      <view class="_view data-v-401b38aa cell-item icon-arrow-right ">
+        <text class="_text data-v-401b38aa cell-text">收货地址管理</text>
+      </view>
+    </view>
+    <view class="_view data-v-401b38aa cell ">
+      <view class="_view data-v-401b38aa cell-item">
+        <text class="_text data-v-401b38aa cell-text">联系客服</text>
+        <text class="_text data-v-401b38aa phone " bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">400-618-4000</text>
+      </view>
+      <view class="_view data-v-401b38aa cell-item icon-arrow-right ">
+        <text class="_text data-v-401b38aa cell-text">意见反馈</text>
+      </view>
+      <view class="_view data-v-401b38aa cell-item icon-arrow-right ">
+        <text class="_text data-v-401b38aa cell-text">关于我们</text>
+      </view>
+    </view>
+    <view class="_view data-v-401b38aa bottom-space"></view>
+  </view>
 </template>

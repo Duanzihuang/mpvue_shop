@@ -52,7 +52,6 @@ __WEBPACK_IMPORTED_MODULE_3_axios___default.a.interceptors.request.use(function 
   if (wx.getStorageSync('token')) {
     config.headers.Authorization = wx.getStorageSync('token');
   }
-  console.log(config);
   return config;
 }, function (error) {
   // 对请求错误做些什么

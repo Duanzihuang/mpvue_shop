@@ -23,7 +23,7 @@ app.$mount();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_pay_vue__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_19c40c08_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_pay_vue__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_19c40c08_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_pay_vue__ = __webpack_require__(161);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -83,14 +83,11 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_defineProperty__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_defineProperty__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_storageHelper__ = __webpack_require__(29);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_storageHelper__ = __webpack_require__(29);
 
 
 //
@@ -165,12 +162,13 @@ if (false) {(function () {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
-    return __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_defineProperty___default()({
+    return {
       ids: null, //传递过来的商品信息
       addressInfo: null, //地址信息
-      token: null, //令牌
       goodsList: [], //商品列表
-      goodsAmount: 0 }, 'token', null);
+      goodsAmount: 0, //商品总金额
+      token: null // 没有登录时候，令牌等于null
+    };
   },
   onLoad: function onLoad(options) {
     this.ids = options.ids;
@@ -209,7 +207,7 @@ if (false) {(function () {
               case 2:
 
                 //1.获取本地存储的数据
-                localGoods = Object(__WEBPACK_IMPORTED_MODULE_3__utils_storageHelper__["c" /* getLocalGoods */])();
+                localGoods = Object(__WEBPACK_IMPORTED_MODULE_2__utils_storageHelper__["c" /* getLocalGoods */])();
 
                 //发送网络请求
 
@@ -272,6 +270,7 @@ if (false) {(function () {
           wx.getUserInfo({
             withCredentials: true,
             success: function success(res2) {
+              wx.setStorageSync('userInfo', res2.userInfo);
               _this3.login(res1, res2);
             },
             fail: function fail(err) {
@@ -326,7 +325,7 @@ if (false) {(function () {
       var _this5 = this;
 
       return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
-        var params, totalPrice, tempArray, result, idsArray;
+        var params, totalPrice, tempArray;
         return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -372,29 +371,23 @@ if (false) {(function () {
                 params.goods = tempArray;
 
                 // 发请求，下订单
-                _context3.next = 13;
-                return _this5.$axios.post('api/public/v1/my/orders/create', params);
+                // const result = await this.$axios.post('api/public/v1/my/orders/create',params)
 
-              case 13:
-                result = _context3.sent;
+                // if(result.data.meta.status === 200){
+                //   this.pay(result.data.message.order_number)
 
+                //   //清除本地存储的商品信息
+                //   if(this.ids.length > 0){
+                //     const idsArray = this.ids.split(',')
 
-                if (result.data.meta.status === 200) {
-                  _this5.pay(result.data.message.order_number);
+                //     idsArray.forEach(id=>{
+                //       deleteGoodsById(id)
+                //     })
+                //   }
+                // }
+                _this5.pay('HMDD20180818000000000137');
 
-                  //清除本地存储的商品信息
-                  if (_this5.ids.length > 0) {
-                    idsArray = _this5.ids.split(',');
-
-
-                    idsArray.forEach(function (id) {
-                      Object(__WEBPACK_IMPORTED_MODULE_3__utils_storageHelper__["b" /* deleteGoodsById */])(id);
-                    });
-                  }
-                }
-                // this.pay('HMDD20180818000000000131')
-
-              case 15:
+              case 12:
               case 'end':
                 return _context3.stop();
             }
@@ -413,15 +406,13 @@ if (false) {(function () {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                console.log(order_number);
-                _context4.next = 3;
+                _context4.next = 2;
                 return _this6.$axios.post('api/public/v1/my/orders/req_unifiedorder', { order_number: order_number });
 
-              case 3:
+              case 2:
                 result = _context4.sent;
 
 
-                console.log(result.data);
                 // 生成预支付单成功
                 if (result.data.meta.status === 200) {
                   wx.requestPayment({
@@ -460,7 +451,7 @@ if (false) {(function () {
                   });
                 }
 
-              case 6:
+              case 4:
               case 'end':
                 return _context4.stop();
             }
@@ -473,7 +464,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 165:
+/***/ 161:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

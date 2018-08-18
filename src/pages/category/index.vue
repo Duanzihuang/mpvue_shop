@@ -50,8 +50,6 @@ export default {
       }
     })
 
-    console.log(this.categories)
-
     // 默认选中第一个
     this.brandList = this.categories[0].children
   },

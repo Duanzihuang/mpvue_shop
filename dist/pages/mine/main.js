@@ -173,7 +173,9 @@ if (false) {(function () {
     };
   },
   onLoad: function onLoad() {
-    this.getUserInfo();
+    if (wx.getStorageSync('userInfo')) {
+      this.userInfo = wx.getStorageSync('userInfo');
+    }
   },
 
   methods: {
@@ -185,7 +187,6 @@ if (false) {(function () {
         success: function success(res) {
           wx.getUserInfo({
             success: function success(res) {
-              console.log(res);
               _this.userInfo = res.userInfo;
             }
           });

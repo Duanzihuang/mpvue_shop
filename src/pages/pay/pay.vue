@@ -73,7 +73,6 @@ export default {
     return {
       ids:null, //传递过来的商品信息
       addressInfo: null, //地址信息
-      token: null, //令牌
       goodsList: [], //商品列表
       goodsAmount: 0, //商品总金额
       token: null // 没有登录时候，令牌等于null
@@ -147,6 +146,7 @@ export default {
           wx.getUserInfo({
             withCredentials: true,
             success: res2 => {
+              wx.setStorageSync('userInfo',res2.userInfo)
               this.login(res1, res2)
             },
             fail: err => {
@@ -212,31 +212,29 @@ export default {
       params.goods = tempArray
 
       // 发请求，下订单
-      const result = await this.$axios.post('api/public/v1/my/orders/create',params)
+      // const result = await this.$axios.post('api/public/v1/my/orders/create',params)
 
-      if(result.data.meta.status === 200){
-        this.pay(result.data.message.order_number)
+      // if(result.data.meta.status === 200){
+      //   this.pay(result.data.message.order_number)
 
-        //清除本地存储的商品信息
-        if(this.ids.length > 0){
-          const idsArray = this.ids.split(',')
+      //   //清除本地存储的商品信息
+      //   if(this.ids.length > 0){
+      //     const idsArray = this.ids.split(',')
 
-          idsArray.forEach(id=>{
-            deleteGoodsById(id)
-          })
-        }
-      }
-      // this.pay('HMDD20180818000000000131')
+      //     idsArray.forEach(id=>{
+      //       deleteGoodsById(id)
+      //     })
+      //   }
+      // }
+      this.pay('HMDD20180818000000000137')
     },
     //支付
     async pay(order_number) {
-      console.log(order_number)
       const result = await this.$axios.post(
         'api/public/v1/my/orders/req_unifiedorder',
         { order_number }
       )
 
-      console.log(result.data)
       // 生成预支付单成功
       if (result.data.meta.status === 200) {
         wx.requestPayment({

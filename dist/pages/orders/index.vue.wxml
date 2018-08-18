@@ -1,5 +1,42 @@
 <template name="2f2f2c22">
   <view class="_view data-v-448e087d">
-    <text class="_text data-v-448e087d">订单列表</text>
+    <view class="_view data-v-448e087d menus">
+      <block wx:key="index" key="{{index}}" wx:for="{{menus}}" wx:for-index="index" wx:for-item="item">
+        <view bindtap="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" class="_view data-v-448e087d {{['menu', selectMenuIndex === index ? 'active' : '']}}"> {{item}} </view>
+      </block>
+    </view>
+    <view class="_view data-v-448e087d order">
+      <block wx:key="order.order_id" key="{{order.order_id}}" wx:for="{{orderList}}" wx:for-index="index" wx:for-item="order">
+        <view class="_view data-v-448e087d order-item">
+          <block wx:key="index2" key="{{index2}}" wx:for="{{order.goods}}" wx:for-index="index2" wx:for-item="item">
+            <view class="_view data-v-448e087d product-item">
+              <navigator url="{{'/pages/goods_detail/main?goods_id='+item.goods_id}}" class="_navigator data-v-448e087d product-left">
+                <image class="_image data-v-448e087d product-img holder-image" src="{{item.goods_small_logo}}"></image>
+              </navigator>
+              <view class="_view data-v-448e087d product-right">
+                <navigator url="{{'/pages/goods_detail/main?goods_id='+item.goods_id}}" class="_navigator data-v-448e087d product-name"> {{ item.goods_name }} </navigator>
+                <view class="_view data-v-448e087d product-price">
+                  <text class="_text data-v-448e087d product-price-symbol">￥</text>
+                  <text class="_text data-v-448e087d product-price-integer">{{ item.goods_price }}</text>
+                  <text class="_text data-v-448e087d product-price-decimal">.00</text>
+                </view>
+                <view class="_view data-v-448e087d product-count">x{{ item.goods_number }}</view>
+              </view>
+            </view>
+          </block>
+          <view class="_view data-v-448e087d order-total"> 共{{order.total_count }}件商品 总计：¥{{order.total_price}} (含运费0.00) </view>
+          <view class="_view data-v-448e087d order-item-pay">
+            <view class="_view data-v-448e087d">订单号:{{order.order_number}}</view>
+            <view bindtap="handleProxy" wx:if="{{order.pay_status==='0'}}" class="_view data-v-448e087d btn-line btn-color-main" data-eventid="{{'1-'+index}}" data-comkey="{{$k}}">支付</view>
+          </view>
+        </view>
+      </block>
+      <view class="_view data-v-448e087d no_order" wx:if="{{orderList.length === 0}}">
+        <view class="_view data-v-448e087d">
+          <image src="/static/img/empty_data.png" alt class="_img data-v-448e087d"></image>
+        </view>
+        <text class="_text data-v-448e087d">没有订单啦...</text>
+      </view>
+    </view>
   </view>
 </template>

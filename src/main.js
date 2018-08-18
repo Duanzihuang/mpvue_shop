@@ -36,7 +36,6 @@ axios.interceptors.request.use(
     if(wx.getStorageSync('token')){
       config.headers.Authorization = wx.getStorageSync('token')
     }
-    console.log(config)
     return config
   },
   function (error) {

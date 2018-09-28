@@ -1,4 +1,4 @@
-<template name="2f2f2c22">
+<template name="07229b0d">
   <view class="_view data-v-448e087d">
     <view class="_view data-v-448e087d menus">
       <block wx:key="index" key="{{index}}" wx:for="{{menus}}" wx:for-index="index" wx:for-item="item">

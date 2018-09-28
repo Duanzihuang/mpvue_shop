@@ -325,7 +325,7 @@ if (false) {(function () {
       var _this5 = this;
 
       return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
-        var params, totalPrice, tempArray;
+        var params, totalPrice, tempArray, result, idsArray;
         return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -371,23 +371,29 @@ if (false) {(function () {
                 params.goods = tempArray;
 
                 // 发请求，下订单
-                // const result = await this.$axios.post('api/public/v1/my/orders/create',params)
+                _context3.next = 13;
+                return _this5.$axios.post('api/public/v1/my/orders/create', params);
 
-                // if(result.data.meta.status === 200){
-                //   this.pay(result.data.message.order_number)
+              case 13:
+                result = _context3.sent;
 
-                //   //清除本地存储的商品信息
-                //   if(this.ids.length > 0){
-                //     const idsArray = this.ids.split(',')
 
-                //     idsArray.forEach(id=>{
-                //       deleteGoodsById(id)
-                //     })
-                //   }
-                // }
-                _this5.pay('HMDD20180818000000000137');
+                if (result.data.meta.status === 200) {
+                  _this5.pay(result.data.message.order_number);
 
-              case 12:
+                  //清除本地存储的商品信息
+                  if (_this5.ids.length > 0) {
+                    idsArray = _this5.ids.split(',');
+
+
+                    idsArray.forEach(function (id) {
+                      Object(__WEBPACK_IMPORTED_MODULE_2__utils_storageHelper__["b" /* deleteGoodsById */])(id);
+                    });
+                  }
+                }
+                // this.pay('HMDD20180928000000000001')
+
+              case 15:
               case 'end':
                 return _context3.stop();
             }
@@ -416,11 +422,11 @@ if (false) {(function () {
                 // 生成预支付单成功
                 if (result.data.meta.status === 200) {
                   wx.requestPayment({
-                    timeStamp: result.data.message.pay.timeStamp,
-                    nonceStr: result.data.message.pay.nonceStr,
-                    package: result.data.message.pay.package,
-                    signType: result.data.message.pay.signType,
-                    paySign: result.data.message.pay.paySign,
+                    timeStamp: result.data.message.wxorder.timeStamp,
+                    nonceStr: result.data.message.wxorder.nonceStr,
+                    package: result.data.message.wxorder.package,
+                    signType: result.data.message.wxorder.signType,
+                    paySign: result.data.message.wxorder.paySign,
                     success: function success(res) {
                       // 1.成功支付之后，调用后台的接口把订单的状态改为已经支付
                       _this6.$axios.post('api/public/v1/my/orders/chkOrder', {

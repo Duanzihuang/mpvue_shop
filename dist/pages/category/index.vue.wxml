@@ -1,4 +1,4 @@
-<template name="69fe898a">
+<template name="73d41b66">
   <view class="_view data-v-6d6b1c16 category">
     <scroll-view scroll-y scroll-with-animation="{{true}}" bindtap="handleProxy" class="_scroll-view data-v-6d6b1c16 category-left" data-eventid="{{'0'}}" data-comkey="{{$k}}" style=" {{('height:' + (windowHeight - 10 + 'px') + ';')}}">
       <block wx:key="category.cat_id" key="{{category.cat_id}}" wx:for="{{categories}}" wx:for-index="index" wx:for-item="category">

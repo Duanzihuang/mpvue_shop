@@ -1,4 +1,4 @@
-<template name="423f2b53">
+<template name="29dae904">
   <view class="_view data-v-36ace7a4">
     <view class="_view data-v-36ace7a4 empty-car" wx:if="{{isEmpty}}">
       <image src="/static/img/kong.png" class="_image data-v-36ace7a4"></image>

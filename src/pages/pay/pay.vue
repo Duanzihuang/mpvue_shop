@@ -212,21 +212,21 @@ export default {
       params.goods = tempArray
 
       // 发请求，下订单
-      // const result = await this.$axios.post('api/public/v1/my/orders/create',params)
+      const result = await this.$axios.post('api/public/v1/my/orders/create',params)
 
-      // if(result.data.meta.status === 200){
-      //   this.pay(result.data.message.order_number)
+      if(result.data.meta.status === 200){
+        this.pay(result.data.message.order_number)
 
-      //   //清除本地存储的商品信息
-      //   if(this.ids.length > 0){
-      //     const idsArray = this.ids.split(',')
+        //清除本地存储的商品信息
+        if(this.ids.length > 0){
+          const idsArray = this.ids.split(',')
 
-      //     idsArray.forEach(id=>{
-      //       deleteGoodsById(id)
-      //     })
-      //   }
-      // }
-      this.pay('HMDD20180818000000000137')
+          idsArray.forEach(id=>{
+            deleteGoodsById(id)
+          })
+        }
+      }
+      // this.pay('HMDD20180928000000000001')
     },
     //支付
     async pay(order_number) {
@@ -238,11 +238,11 @@ export default {
       // 生成预支付单成功
       if (result.data.meta.status === 200) {
         wx.requestPayment({
-          timeStamp: result.data.message.pay.timeStamp,
-          nonceStr: result.data.message.pay.nonceStr,
-          package: result.data.message.pay.package,
-          signType: result.data.message.pay.signType,
-          paySign: result.data.message.pay.paySign,
+          timeStamp: result.data.message.wxorder.timeStamp,
+          nonceStr: result.data.message.wxorder.nonceStr,
+          package: result.data.message.wxorder.package,
+          signType: result.data.message.wxorder.signType,
+          paySign: result.data.message.wxorder.paySign,
           success: res => {
             // 1.成功支付之后，调用后台的接口把订单的状态改为已经支付
             this.$axios

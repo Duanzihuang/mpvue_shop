@@ -1,4 +1,4 @@
-<template name="887c8548">
+<template name="75ec29f2">
   <view class="_div data-v-05fdf537">
     <swiper class="_swiper data-v-05fdf537 slide" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="1000" indicator-active-color="#ffffff" circular>
       <block wx:key="item.image_src" key="{{item.image_src}}" wx:for="{{swiperdata}}" wx:for-index="index" wx:for-item="item">

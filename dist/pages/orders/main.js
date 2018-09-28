@@ -23,7 +23,7 @@ app.$mount();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_448e087d_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_448e087d_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(156);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -37,12 +37,12 @@ var normalizeComponent = __webpack_require__(2)
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-448e087d"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_448e087d_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_448e087d_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
@@ -229,11 +229,11 @@ if (false) {(function () {
                 // 生成预支付单成功
                 if (result.data.meta.status === 200) {
                   wx.requestPayment({
-                    timeStamp: result.data.message.pay.timeStamp,
-                    nonceStr: result.data.message.pay.nonceStr,
-                    package: result.data.message.pay.package,
-                    signType: result.data.message.pay.signType,
-                    paySign: result.data.message.pay.paySign,
+                    timeStamp: result.data.message.wxorder.timeStamp,
+                    nonceStr: result.data.message.wxorder.nonceStr,
+                    package: result.data.message.wxorder.package,
+                    signType: result.data.message.wxorder.signType,
+                    paySign: result.data.message.wxorder.paySign,
                     success: function success(res) {
                       // 1.成功支付之后，调用后台的接口把订单的状态改为已经支付
                       _this2.$axios.post('api/public/v1/my/orders/chkOrder', {
@@ -245,6 +245,7 @@ if (false) {(function () {
                       });
                     },
                     fail: function fail(err) {
+                      console.log(err);
                       wx.showToast({
                         title: '用户取消了支付', //提示的内容,
                         image: '/static/img/error.png', //图标,

@@ -104,11 +104,11 @@ export default {
       // 生成预支付单成功
       if (result.data.meta.status === 200) {
         wx.requestPayment({
-          timeStamp: result.data.message.pay.timeStamp,
-          nonceStr: result.data.message.pay.nonceStr,
-          package: result.data.message.pay.package,
-          signType: result.data.message.pay.signType,
-          paySign: result.data.message.pay.paySign,
+          timeStamp: result.data.message.wxorder.timeStamp,
+          nonceStr: result.data.message.wxorder.nonceStr,
+          package: result.data.message.wxorder.package,
+          signType: result.data.message.wxorder.signType,
+          paySign: result.data.message.wxorder.paySign,
           success: res => {
             // 1.成功支付之后，调用后台的接口把订单的状态改为已经支付
             this.$axios
@@ -122,6 +122,7 @@ export default {
               })
           },
           fail: err => {
+            console.log(err)
             wx.showToast({
               title: '用户取消了支付', //提示的内容,
               image: '/static/img/error.png', //图标,
@@ -141,7 +142,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .menus {
   height: 100rpx;
   background-color: #ffffff;

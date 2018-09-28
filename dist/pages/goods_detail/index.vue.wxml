@@ -1,4 +1,4 @@
-<template name="0c4385d2">
+<template name="4c5f8fc2">
   <view class="_view data-v-6f3a46f2">
     <swiper indicator-dots="{{true}}" autoplay interval="{{3000}}" duration="{{1000}}" circular indicator-color="rgba(255,255,255,.5)" indicator-active-color="#ffffff" class="_swiper data-v-6f3a46f2">
       <block wx:key="item.pics_id" key="{{item.pics_id}}" wx:for="{{goods_detail.pics}}" wx:for-index="index" wx:for-item="item">

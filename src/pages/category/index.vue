@@ -37,19 +37,6 @@ export default {
     const res = await this.$axios.get('api/public/v1/categories')
     this.categories = res.data.message
 
-    // 处理，把图片路径补全
-    this.categories.forEach(category => {
-      if (category) {
-        category.children.forEach(brandList => {
-          if (brandList && brandList.children) {
-            brandList.children.forEach(brand => {
-              brand.cat_icon = `https://www.zhengzhicheng.cn/${brand.cat_icon}`
-            })
-          }
-        })
-      }
-    })
-
     // 默认选中第一个
     this.brandList = this.categories[0].children
   },

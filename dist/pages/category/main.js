@@ -142,23 +142,10 @@ if (false) {(function () {
 
               _this.categories = res.data.message;
 
-              // 处理，把图片路径补全
-              _this.categories.forEach(function (category) {
-                if (category) {
-                  category.children.forEach(function (brandList) {
-                    if (brandList && brandList.children) {
-                      brandList.children.forEach(function (brand) {
-                        brand.cat_icon = 'https://www.zhengzhicheng.cn/' + brand.cat_icon;
-                      });
-                    }
-                  });
-                }
-              });
-
               // 默认选中第一个
               _this.brandList = _this.categories[0].children;
 
-            case 8:
+            case 7:
             case 'end':
               return _context.stop();
           }
